@@ -8,8 +8,7 @@ module.exports = {
     url,
     siteUrl: url,
     title: 'Blog by John Doe',
-    subtitle:
-      'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     copyright: '© All rights reserved.',
     disqusShortname: '',
     menu: [
@@ -129,7 +128,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['roboto:400,400i,500,700'],
+        fonts: ['roboto:400,400i,500,700', 'roboto slab', 'open sans', 'lato', 'Noto Sans JP'],
       },
     },
     'gatsby-plugin-sitemap',

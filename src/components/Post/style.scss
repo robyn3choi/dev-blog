@@ -7,7 +7,7 @@
     @include margin-bottom(0.5);
   }
   &__title {
-    font-size: $typographic-base-font-size * 1.6875;
+    font-size: $typographic-base-font-size * 2;
     @include line-height(1.5);
     @include margin-top(0);
     @include margin-bottom(0.5);
@@ -48,13 +48,42 @@
       }
     }
   }
-  &__readmore {
-    font-size: $typographic-base-font-size;
-    color: $color-primary;
-    &:hover,
-    &:focus {
-      color: $color-primary;
-      border-bottom: 1px solid $color-primary;
+  // &__readmore {
+  //   font-size: $typographic-base-font-size;
+  //   color: $color-primary;
+  //   &:hover,
+  //   &:focus {
+  //     color: $color-primary;
+  //     border-bottom: 1px solid $color-primary;
+  //   }
+  // }
+  &__tags {
+    // @include margin-bottom(0.5);
+    display: inline-block;
+    font-size: $typographic-xsmall-font-size;
+    &-list {
+      list-style: none;
+      margin: 0 -5px;
+      padding: 0;
+      &-item {
+        display: inline-block;
+        //margin: 10px 0px;
+        &-link {
+          //background: $color-secondary;
+          text-decoration: none;
+          border: 1px solid $color-primary;
+          border-radius: 3px;
+          color: $color-primary;
+          line-height: $typographic-base-line-height;
+          padding: 4px 8px;
+          &:hover,
+          &:focus {
+            color: white; //$color-base;
+            background: $color-primary; //darken($color-gray-bg, 5%);
+            //border: 0;
+          }
+        }
+      }
     }
   }
 }
