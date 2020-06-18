@@ -38,23 +38,13 @@ export const pageQuery = graphql`
         author {
           name
           email
-          telegram
-          twitter
           github
-          rss
-          vk
         }
       }
     }
     allMarkdownRemark(
       limit: 1000
-      filter: {
-        frontmatter: {
-          tags: { in: [$tag] }
-          layout: { eq: "post" }
-          draft: { ne: true }
-        }
-      }
+      filter: { frontmatter: { tags: { in: [$tag] }, layout: { eq: "post" }, draft: { ne: true } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
@@ -62,12 +52,14 @@ export const pageQuery = graphql`
           fields {
             slug
             categorySlug
+            tagSlugs
           }
           frontmatter {
             title
             date
             category
             description
+            tags
           }
         }
       }

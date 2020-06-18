@@ -4,22 +4,20 @@ import moment from 'moment'
 import './style.scss'
 
 export default function Post(props) {
-  const { title, date, category, description, tags } = props.data.node.frontmatter
-  const { slug, categorySlug, tagSlugs } = props.data.node.fields
-  console.log(tags)
+  const { title, date, description, tags } = props.data.node.frontmatter
+  const { slug, tagSlugs } = props.data.node.fields
+
   function renderTags() {
     return (
-      <div className="post__tags">
-        <ul className="post__tags-list">
-          {tags.map((tag, i) => (
-            <li className="post__tags-list-item" key={tag}>
-              <Link to={tagSlugs[i]} className="post__tags-list-item-link">
-                {tags[i]}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="post__tags">
+        {tags.map((tag, i) => (
+          <li className="post__tag" key={tag}>
+            <Link to={tagSlugs[i]} className="post__tag-link">
+              {tags[i]}
+            </Link>
+          </li>
+        ))}
+      </ul>
     )
   }
 
@@ -30,17 +28,17 @@ export default function Post(props) {
           {title}
         </Link>
       </h2>
-      <div className="post__meta">
-        <time className="post__meta-time" dateTime={moment(date).format('MMMM D, YYYY')}>
-          {moment(date).format('MMM DD YYYY')}
-        </time>
-        <span className="post__meta-divider" />
-        {tags && renderTags()}
-      </div>
       <p className="post__description">{description}</p>
       {/* <Link className="post__readmore" to={slug}>
           Read
         </Link> */}
+      <div className="post__meta">
+        <time className="post__meta-time" dateTime={moment(date).format('MMMM D, YYYY')}>
+          {moment(date).format('D MMM YYYY')}
+        </time>
+        <span className="post__meta-divider">•</span>
+        {tags && renderTags()}
+      </div>
     </div>
   )
 }

@@ -8,17 +8,20 @@ $color-primary: #229fd0; //#5d93ff;
 $color-secondary: #e17335; //#f7a046;
 
 $color-white: lighten($color-base, 100%);
-$color-gray: lighten($color-base, 40%);
+$color-gray: lighten($color-base, 45%);
 $color-gray-border: lighten($color-base, 77%);
 $color-gray-bg: lighten($color-base, 79%);
 
 // Typographic
-$typographic-font-family: 'Noto Sans JP', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$typographic-font-family: 'Noto Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$typographic-font-family--heading: 'Zilla Slab', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$typographic-font-family--small: 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
 $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
 $typographic-small-font-size: 14px;
-$typographic-xsmall-font-size: 12px;
+$typographic-xsmall-font-size: 13px;
+$typographic-xxsmall-font-size: 12px;
 
 $typographic-base-line-height: 1.625;
 

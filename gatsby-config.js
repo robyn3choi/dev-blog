@@ -7,9 +7,9 @@ module.exports = {
   siteMetadata: {
     url,
     siteUrl: url,
-    title: 'Blog by John Doe',
-    subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-    copyright: '© All rights reserved.',
+    title: 'Bit.Birdy',
+    subtitle: 'Tutorials for fun, interactive JavaScript elements to add to your website.',
+    copyright: '© 2020 Robyn Choi',
     disqusShortname: '',
     menu: [
       {
@@ -26,13 +26,14 @@ module.exports = {
       },
     ],
     author: {
-      name: 'John Doe',
+      name: 'BitBirdy',
       email: '#',
-      telegram: '#',
-      twitter: '#',
+      //telegram: '#',
+      //twitter: '#',
       github: '#',
-      rss: '#',
-      vk: '#',
+      linkedin: '#',
+      //rss: '#',
+      //vk: '#',
     },
   },
   plugins: [
@@ -128,7 +129,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['roboto:400,400i,500,700', 'roboto slab', 'open sans', 'lato', 'Noto Sans JP'],
+        fonts: ['Noto Sans:300,400,500,700,900', 'Zilla Slab:400,500,600,700', 'Montserrat:300,300i,400,400i'],
       },
     },
     'gatsby-plugin-sitemap',
