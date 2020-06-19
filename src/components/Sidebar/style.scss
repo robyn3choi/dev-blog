@@ -14,7 +14,8 @@
       margin-bottom: 0;
       //border-radius: 50%;
       //background-clip: padding-box;
-      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+      -ms-interpolation-mode: nearest-neighbor;
     }
     &-title {
       font-family: $typographic-font-family--heading;
