@@ -10,14 +10,13 @@ exports.createPages = ({ graphql, actions }) => {
     const postTemplate = path.resolve('./src/templates/post-template.jsx')
     const pageTemplate = path.resolve('./src/templates/page-template.jsx')
     const tagTemplate = path.resolve('./src/templates/tag-template.jsx')
-    const categoryTemplate = path.resolve(
-      './src/templates/category-template.jsx'
-    )
+    const categoryTemplate = path.resolve('./src/templates/category-template.jsx')
 
     graphql(`
       {
         allMarkdownRemark(
           limit: 1000
+          sort: { fields: [frontmatter___date], order: DESC }
           filter: { frontmatter: { draft: { ne: true } } }
         ) {
           edges {
@@ -29,6 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
                 tags
                 layout
                 category
+                title
               }
             }
           }
@@ -40,6 +40,18 @@ exports.createPages = ({ graphql, actions }) => {
         reject(result.errors)
       }
 
+      const posts = result.data.allMarkdownRemark.edges.filter(edge => edge.node.frontmatter.layout === 'post')
+      posts.forEach((post, index) => {
+        const previous = index === posts.length - 1 ? null : posts[index + 1].node
+        const next = index === 0 ? null : posts[index - 1].node
+
+        createPage({
+          path: post.node.fields.slug,
+          component: slash(postTemplate),
+          context: { slug: post.node.fields.slug, previous, next },
+        })
+      })
+
       _.each(result.data.allMarkdownRemark.edges, edge => {
         if (_.get(edge, 'node.frontmatter.layout') === 'page') {
           createPage({
@@ -48,11 +60,11 @@ exports.createPages = ({ graphql, actions }) => {
             context: { slug: edge.node.fields.slug },
           })
         } else if (_.get(edge, 'node.frontmatter.layout') === 'post') {
-          createPage({
-            path: edge.node.fields.slug,
-            component: slash(postTemplate),
-            context: { slug: edge.node.fields.slug },
-          })
+          // createPage({
+          //   path: edge.node.fields.slug,
+          //   component: slash(postTemplate),
+          //   context: { slug: edge.node.fields.slug },
+          // })
 
           let tags = []
           if (_.get(edge, 'node.frontmatter.tags')) {
@@ -98,10 +110,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const parsedFilePath = path.parse(node.absolutePath)
     const slug = `/${parsedFilePath.dir.split('--')[1]}/`
     createNodeField({ node, name: 'slug', value: slug })
-  } else if (
-    node.internal.type === 'MarkdownRemark' &&
-    typeof node.slug === 'undefined'
-  ) {
+  } else if (node.internal.type === 'MarkdownRemark' && typeof node.slug === 'undefined') {
     const fileNode = getNode(node.parent)
     let slug = fileNode.fields.slug
     if (typeof node.frontmatter.path !== 'undefined') {
@@ -114,16 +123,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
 
     if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(
-        tag => `/tags/${_.kebabCase(tag)}/`
-      )
+      const tagSlugs = node.frontmatter.tags.map(tag => `/tags/${_.kebabCase(tag)}/`)
       createNodeField({ node, name: 'tagSlugs', value: tagSlugs })
     }
 
     if (typeof node.frontmatter.category !== 'undefined') {
-      const categorySlug = `/categories/${_.kebabCase(
-        node.frontmatter.category
-      )}/`
+      const categorySlug = `/categories/${_.kebabCase(node.frontmatter.category)}/`
       createNodeField({ node, name: 'categorySlug', value: categorySlug })
     }
   }

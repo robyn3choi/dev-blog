@@ -161,6 +161,26 @@ figcaption {
   }
 }
 
+.arrow {
+  border: solid;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 1px;
+}
+
+.right {
+  margin-left: 4px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  margin-right: 4px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 @include breakpoint-sm {
   figure.float-left,
   figure.float-right {
