@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     url,
     siteUrl: url,
-    title: 'Bit.Birdy',
+    title: 'BitBirdy',
     subtitle: 'A front-end web development blog by Robyn Choi, a full-time JavaScripter in Vancouver, BC.',
     copyright: '© 2020 Robyn Choi',
     disqusShortname: '',

@@ -26,6 +26,9 @@ class PostTemplateDetails extends React.Component {
 
     return (
       <div className="post-single">
+        <div className="post-single__home-link">
+          <Link to="/">BitBirdy</Link>
+        </div>
         <div className="post-single__inner">
           <h1 className="post-single__title">{post.frontmatter.title}</h1>
           <div className="post-single__meta">

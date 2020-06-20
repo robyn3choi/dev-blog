@@ -1,13 +1,13 @@
 ---
-title: "About me"
+title: 'About me'
 layout: page
-path: "/about"
+path: '/about'
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+Hey there, I'm Robyn. I'm a software engineer living in Vancouver, BC. Recently, I've been building UIs for web apps using React (with TypeScript these days). Before that, I was working as a game developer, mostly using Unity, but also delving into C++.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](./1.jpg)
+After work - if I can bring myself to do some more programming - I've been either building this blog using Gatsby, or experimenting with Godot Engine, an up-and-coming game engine. When I'm tired of coding but able to sit at my desk for a little while longer, I'm usually either working on some pixel art, gaming, or binging productivity videos while eating overpriced ice cream.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+When I'm not at my desk (a rare sight), I like going bouldering, playing tabletop games, or cooking spicy Asian food.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+Feel free to send me a message/email if you'd like to talk about any of the above!

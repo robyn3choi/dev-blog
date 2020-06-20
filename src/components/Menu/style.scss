@@ -9,22 +9,19 @@
     margin: 0;
     &-item {
       padding: 0;
-      margin: 10px 0;
+      margin: 5px 0;
       &-link {
-        font-size: $typographic-base-font-size;
+        font-size: $typographic-base-font-size * 1.2;
         color: $typographic-base-font-color;
-        font-weight: 400;
-        //border: 0;
+        font-family: $typographic-font-family--heading;
         &:hover,
         &:focus {
           color: $color-secondary;
           text-decoration: underline;
           text-decoration-color: $color-secondary;
-          //border-bottom: 1px solid $color-primary;
         }
         &--active {
           color: $color-base;
-          //border-bottom: 1px solid $color-secondary;
           text-decoration: underline;
           text-decoration-color: $color-base;
         }
