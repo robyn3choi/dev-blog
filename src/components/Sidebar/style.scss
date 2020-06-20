@@ -29,7 +29,9 @@
       text-align: left;
       color: $color-gray;
       @include line-height(1);
-      @include margin-bottom(1);
+      &:last-of-type {
+        @include margin-bottom(1);
+      }
     }
   }
   &__copyright {

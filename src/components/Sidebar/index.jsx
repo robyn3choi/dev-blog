@@ -31,10 +31,8 @@ class Sidebar extends React.Component {
             </Link>
           </h2>
         )}
+        <p className="sidebar__author-subtitle">{subtitle}</p>
         <p className="sidebar__author-subtitle">
-          {subtitle}
-          <br />
-          <br />
           To see some of my work, check out my&nbsp;
           <a href={author.portfolio} target="_blank" rel="noopener noreferrer">
             portfolio website
