@@ -24,10 +24,10 @@
       @include margin(0.5, 0, 0.5, 0);
       &-link {
         color: $color-primary;
-        &:hover,
-        &:focus {
-          color: $color-base;
-        }
+        // &:hover {
+        //   color: $color-secondary;
+        //   text-decoration: underline;
+        // }
       }
     }
     &-subtitle {

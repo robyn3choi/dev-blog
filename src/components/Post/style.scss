@@ -16,9 +16,9 @@
       color: $color-base;
       &:hover,
       &:focus {
-        color: $color-base;
-        //border-bottom: 1px solid $color-base;
+        color: $color-secondary;
         text-decoration: underline;
+        text-decoration-color: $color-secondary;
       }
     }
   }

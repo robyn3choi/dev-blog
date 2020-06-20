@@ -36,6 +36,7 @@ export const pageQuery = graphql`
         copyright
         author {
           name
+          portfolio
         }
         disqusShortname
         url

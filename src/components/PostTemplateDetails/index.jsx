@@ -5,10 +5,11 @@ import './style.scss'
 
 class PostTemplateDetails extends React.Component {
   render() {
+    const { subtitle, author } = this.props.data.site.siteMetadata
     const post = this.props.data.markdownRemark
     const tags = post.fields.tagSlugs
     const { previous, next } = this.props.pageContext
-
+    console.log(author)
     function renderTags() {
       return (
         <ul className="post-single__tags">
@@ -42,37 +43,36 @@ class PostTemplateDetails extends React.Component {
         </div>
         <hr />
         <div className="post-single__footer">
-          {/* {tagsBlock} */}
-          {/* <p className="post-single__footer-text">
-              {subtitle}
-              <a
-                href={`https://twitter.com/${author.twitter}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <br /> <strong>{author.name}</strong> on Twitter
-              </a>
-            </p> */}
+          <p className="post-single__footer-text">
+            {subtitle}
+            &nbsp;To see some of my work, check out my&nbsp;
+            <a href={author.portfolio} target="_blank" rel="noopener noreferrer">
+              portfolio website
+            </a>
+            .
+          </p>
           <div className="post-single__footer-nav">
-            {previous && (
-              <Link className="post-single__footer-prev" to={previous.fields.slug} rel="prev">
-                <i className="arrow left" />
-                {previous.frontmatter.title}
+            <div className="post-single__footer-nav-link">
+              {previous && (
+                <Link className="post-single__footer-prev" to={previous.fields.slug} rel="prev">
+                  <i className="arrow left" />
+                  {previous.frontmatter.title}
+                </Link>
+              )}
+            </div>
+            <div className="post-single__footer-nav-link">
+              <Link className="post-single__footer-home" to="/">
+                All Posts
               </Link>
-            )}
-          </div>
-          <div className="post-single__footer-nav">
-            <Link className="post-single__footer-home" to="/">
-              All Posts
-            </Link>
-          </div>
-          <div className="post-single__footer-nav">
-            {next && (
-              <Link className="post-single__footer-next" to={next.fields.slug} rel="next">
-                {next.frontmatter.title}
-                <i className="arrow right" />
-              </Link>
-            )}
+            </div>
+            <div className="post-single__footer-nav-link">
+              {next && (
+                <Link className="post-single__footer-next" to={next.fields.slug} rel="next">
+                  {next.frontmatter.title}
+                  <i className="arrow right" />
+                </Link>
+              )}
+            </div>
           </div>
 
           {/* {commentsBlock} */}
