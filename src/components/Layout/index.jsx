@@ -10,8 +10,8 @@ class Layout extends React.Component {
     return (
       <div className="layout">
         <Helmet defaultTitle="BitBirdy - A front-end web dev blog" />
-        <ModeSwitch />
         {children}
+        <ModeSwitch />
       </div>
     )
   }

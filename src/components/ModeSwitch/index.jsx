@@ -20,18 +20,16 @@ export default class ModeSwitch extends React.Component {
             return null
           }
           return (
-            <div>
-              <Switch
-                className="mode-switch"
-                aria-label="dark/light mode toggle"
-                checkedIcon={moonIcon}
-                uncheckedIcon={sunicon}
-                onChange={checked => toggleTheme(checked ? 'dark' : 'light')}
-                checked={theme === 'dark'}
-                offColor="#5a78bb"
-                onColor="#5a78bb"
-              />
-            </div>
+            <Switch
+              className="mode-switch"
+              aria-label="dark/light mode toggle"
+              checkedIcon={moonIcon}
+              uncheckedIcon={sunicon}
+              onChange={checked => toggleTheme(checked ? 'dark' : 'light')}
+              checked={theme === 'dark'}
+              offColor="#5a78bb"
+              onColor="#5a78bb"
+            />
           )
         }}
       </ThemeToggler>
