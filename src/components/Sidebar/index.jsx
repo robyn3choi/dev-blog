@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
     const { location } = this.props
     const { author, subtitle, copyright, menu } = this.props.data.site.siteMetadata
     const isHomePage = get(location, 'pathname', '/') === '/'
-    console.log(author)
+
     /* eslint-disable jsx-a11y/img-redundant-alt */
     const authorBlock = (
       <div>

@@ -9,7 +9,7 @@ class PostTemplateDetails extends React.Component {
     const post = this.props.data.markdownRemark
     const tags = post.fields.tagSlugs
     const { previous, next } = this.props.pageContext
-    console.log(author)
+
     function renderTags() {
       return (
         <ul className="post-single__tags">

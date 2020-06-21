@@ -5,9 +5,6 @@ import moon from './moon.png'
 import sun from './sun.png'
 import './style.scss'
 
-// offColor="#86a8d5"
-// onColor="#3a4a6f"
-
 export default class ModeSwitch extends React.Component {
   render() {
     const moonIcon = <img src={moon} alt="dark mode icon" className="mode-switch__icon" />
@@ -23,16 +20,18 @@ export default class ModeSwitch extends React.Component {
             return null
           }
           return (
-            <Switch
-              className="mode-switch"
-              aria-label="dark/light mode toggle"
-              checkedIcon={moonIcon}
-              uncheckedIcon={sunicon}
-              onChange={checked => toggleTheme(checked ? 'dark' : 'light')}
-              checked={theme === 'dark'}
-              offColor="#5a78bb"
-              onColor="#5a78bb"
-            />
+            <label>
+              <Switch
+                className="mode-switch"
+                aria-label="dark/light mode toggle"
+                checkedIcon={moonIcon}
+                uncheckedIcon={sunicon}
+                onChange={checked => toggleTheme(checked ? 'dark' : 'light')}
+                checked={theme === 'dark'}
+                offColor="#5a78bb"
+                onColor="#5a78bb"
+              />
+            </label>
           )
         }}
       </ThemeToggler>
