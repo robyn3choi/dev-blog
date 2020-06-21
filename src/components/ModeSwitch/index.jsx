@@ -5,6 +5,9 @@ import moon from './moon.png'
 import sun from './sun.png'
 import './style.scss'
 
+// offColor="#86a8d5"
+// onColor="#3a4a6f"
+
 export default class ModeSwitch extends React.Component {
   render() {
     const moonIcon = <img src={moon} alt="dark mode icon" className="mode-switch__icon" />
@@ -27,8 +30,8 @@ export default class ModeSwitch extends React.Component {
               uncheckedIcon={sunicon}
               onChange={checked => toggleTheme(checked ? 'dark' : 'light')}
               checked={theme === 'dark'}
-              offColor="#72cbee"
-              onColor="#3a4a6f"
+              offColor="#5a78bb"
+              onColor="#5a78bb"
             />
           )
         }}

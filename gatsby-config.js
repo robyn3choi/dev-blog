@@ -8,7 +8,8 @@ module.exports = {
     url,
     siteUrl: url,
     title: 'BitBirdy',
-    subtitle: 'A front-end web development blog by Robyn Choi, a full-time JavaScripter in Vancouver, BC.',
+    subtitle:
+      'A front-end web development blog by Robyn Choi, a professional JavaScripter and amateur pixel artist in Vancouver, BC.',
     copyright: '© 2020 Robyn Choi',
     disqusShortname: '',
     menu: [
@@ -125,7 +126,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-google-analytics',
-      options: { trackingId: 'UA-73379983-2' },
+      options: { trackingId: 'UA-170244271-1' },
     },
     {
       resolve: 'gatsby-plugin-google-fonts',
