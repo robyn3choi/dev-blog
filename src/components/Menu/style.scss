@@ -29,3 +29,16 @@
     }
   }
 }
+
+.dark .menu__list-item-link {
+  color: $typographic-base-font-color--dm;
+  &:hover,
+  &:focus {
+    color: $color-secondary;
+    text-decoration-color: $color-secondary;
+  }
+  &--active {
+    color: $typographic-base-font-color--dm;
+    text-decoration-color: $typographic-base-font-color--dm;
+  }
+}

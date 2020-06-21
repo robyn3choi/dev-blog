@@ -27,16 +27,25 @@
     }
     &-subtitle {
       text-align: left;
-      color: $color-gray;
+      color: $color-dark-gray;
       @include line-height(1);
       &:last-of-type {
         @include margin-bottom(1);
       }
+      a {
+        text-decoration: underline;
+      }
     }
   }
   &__copyright {
-    color: lighten($color-gray, 18%);
+    color: $color-light-gray;
     font-size: $typographic-small-font-size;
+  }
+}
+
+.dark {
+  .sidebar__author-subtitle {
+    color: $color-light-gray;
   }
 }
 
@@ -46,16 +55,22 @@
     &__inner {
       padding: 30px 20px 0;
       &:after {
-        background: $color-gray-border;
-        background: linear-gradient(to bottom, $color-gray-border 0%, $color-gray-border 48%, $color-white 100%);
+        background: $color-very-light-gray;
+        background: linear-gradient(to bottom, $color-very-light-gray 0%, $color-very-light-gray 48%, white 100%);
         position: absolute;
         content: '';
         width: 1px;
-        height: 540px;
+        height: 100%;
         top: 30px;
         right: -10px;
         bottom: 0;
       }
+    }
+  }
+  .dark {
+    .sidebar__inner:after {
+      background: $color-very-dark-gray;
+      background: linear-gradient(to bottom, $color-very-dark-gray 48%, $color-background--dm 100%);
     }
   }
 }

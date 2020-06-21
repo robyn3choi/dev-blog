@@ -7,10 +7,12 @@ $color-base: #222;
 $color-primary: #2eaee0;
 $color-secondary: #f57d4e;
 
-$color-white: lighten($color-base, 100%);
-$color-gray: lighten($color-base, 35%);
-$color-gray-border: lighten($color-base, 77%);
-$color-gray-bg: lighten($color-base, 79%);
+$color-very-dark-gray: #585858;
+$color-dark-gray: #7b7b7b;
+$color-light-gray: #a9a9a9;
+$color-very-light-gray: #dddddd;
+
+$color-background--dm: #1b1e24;
 
 // Typographic
 $typographic-font-family: 'Noto Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
@@ -26,6 +28,7 @@ $typographic-xxsmall-font-size: 12px;
 $typographic-base-line-height: 1.625;
 
 $typographic-base-font-color: $color-base;
+$typographic-base-font-color--dm: #dcd9d4;
 $typographic-link-p-font-color: $color-primary;
 $typographic-link-s-font-color: $color-secondary;
 

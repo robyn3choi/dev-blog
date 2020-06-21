@@ -3,10 +3,9 @@
 
 .post-single {
   &__home-link {
-    text-align: center;
-    font-family: $typographic-font-family--heading;
-    font-size: $typographic-base-font-size * 1.3;
-    @include margin-top(1);
+    position: absolute;
+    top: 16px;
+    left: 16px;
   }
   &__inner {
     max-width: $layout-post-single-max-width;
@@ -22,6 +21,7 @@
     text-align: center;
     @include line-height(1.65);
     @include margin-top(1);
+    @include margin-top(2.25);
     @include margin-bottom(0.5);
   }
   &__meta {
@@ -30,8 +30,8 @@
     justify-content: center;
     @include margin-bottom(1);
     &-time {
-      font-size: $typographic-xsmall-font-size;
-      color: $color-gray;
+      font-size: $typographic-small-font-size;
+      color: $color-dark-gray;
     }
     &-divider {
       font-size: 0.5rem;
@@ -93,8 +93,6 @@
     }
   }
   &__footer {
-    //display: flex;
-    //justify-content: ;
     max-width: $layout-post-single-width;
     margin-left: 15px;
     margin-right: 15px;
@@ -104,7 +102,7 @@
     &-text {
       //color: $color-gray;
       @include margin-bottom(2.5);
-      & a {
+      a {
         text-decoration: underline;
       }
     }
@@ -134,8 +132,18 @@
   }
 }
 
+.dark {
+  .post-single__meta-time {
+    color: $color-light-gray;
+  }
+}
+
 @include breakpoint-sm {
   .post-single {
+    &__home-link {
+      top: 30px;
+      left: 30px;
+    }
     &__footer {
       margin-left: auto;
       margin-right: auto;
@@ -151,12 +159,6 @@
 
 @include breakpoint-md {
   .post-single {
-    &__home-link {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      margin: 0;
-    }
     &__inner {
       padding: 0;
     }

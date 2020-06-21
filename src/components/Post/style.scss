@@ -30,8 +30,8 @@
     display: flex;
     align-items: center;
     &-time {
-      font-size: $typographic-xsmall-font-size;
-      color: $color-gray;
+      font-size: $typographic-small-font-size;
+      color: $color-dark-gray;
       font-weight: 400;
     }
     &-divider {
@@ -65,5 +65,19 @@
         //border: 0;
       }
     }
+  }
+}
+
+.dark {
+  .post__title-link {
+    color: $typographic-base-font-color--dm;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  .post__meta-time {
+    color: $color-light-gray;
   }
 }

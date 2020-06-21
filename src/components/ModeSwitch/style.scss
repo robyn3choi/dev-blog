@@ -1,0 +1,22 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+.mode-switch {
+  position: absolute !important;
+  top: 16px;
+  right: 16px;
+}
+
+.mode-switch__icon {
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  width: 20px;
+}
+
+@include breakpoint-sm {
+  .mode-switch {
+    top: 30px;
+    right: 30px;
+  }
+}
