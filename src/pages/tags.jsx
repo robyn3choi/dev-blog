@@ -8,7 +8,7 @@ import Sidebar from '../components/Sidebar'
 class TagsRoute extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata
-    const tags = this.props.data.allMarkdownRemark.group
+    const tags = this.props.data.allMdx.group
 
     return (
       <Layout>
@@ -61,7 +61,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(limit: 2000, filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }) {
+    allMdx(limit: 2000, filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

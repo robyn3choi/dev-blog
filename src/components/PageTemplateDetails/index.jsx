@@ -4,7 +4,7 @@ import './style.scss'
 
 class PageTemplateDetails extends React.Component {
   render() {
-    const page = this.props.data.markdownRemark
+    const page = this.props.data.mdx
 
     return (
       <div>
@@ -16,7 +16,7 @@ class PageTemplateDetails extends React.Component {
               <div
                 className="page__body"
                 /* eslint-disable-next-line react/no-danger */
-                dangerouslySetInnerHTML={{ __html: page.html }}
+                dangerouslySetInnerHTML={{ __html: page.body }}
               />
             </div>
           </div>

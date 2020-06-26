@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import moment from 'moment'
 import './style.scss'
 
 class PostTemplateDetails extends React.Component {
   render() {
     const { subtitle, author } = this.props.data.site.siteMetadata
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.mdx
     const tags = post.fields.tagSlugs
     const { previous, next } = this.props.pageContext
 
@@ -38,11 +39,7 @@ class PostTemplateDetails extends React.Component {
             <span className="post-single__meta-divider">•</span>
             {tags && renderTags()}
           </div>
-          <div
-            className="post-single__body"
-            /* eslint-disable-next-line react/no-danger */
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <MDXRenderer className="post-single__body">{post.body}</MDXRenderer>
         </div>
         <hr />
         <div className="post-single__footer">

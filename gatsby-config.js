@@ -21,10 +21,6 @@ module.exports = {
         label: 'About me',
         path: '/about/',
       },
-      // {
-      //   label: 'Contact me',
-      //   path: '/contact/',
-      // },
     ],
     author: {
       name: 'BitBirdy',
@@ -47,7 +43,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-feed',
+      resolve: 'gatsby-plugin-feed-mdx',
       options: {
         query: `
           {
@@ -62,26 +58,26 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(edge =>
+            serialize: ({ query: { site, allMdx } }) =>
+              allMdx.edges.map((edge) =>
                 Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.url + edge.node.fields.slug,
                   guid: site.siteMetadata.url + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                  custom_elements: [{ 'content:encoded': edge.node.body }],
                 })
               ),
             query: `
               {
-                allMarkdownRemark(
+                allMdx(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] },
                   filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
                 ) {
                   edges {
                     node {
-                      html
+                      body
                       fields {
                         slug
                       }
@@ -103,14 +99,13 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        plugins: [
+        extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 960,
-            },
+            options: { maxWidth: 960 },
           },
           {
             resolve: 'gatsby-remark-responsive-iframe',

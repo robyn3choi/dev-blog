@@ -1,0 +1,43 @@
+---
+title: How to make a preloader or loading screen
+date: '2020-06-24'
+layout: post
+draft: false
+path: '/posts/preloader/'
+category: ''
+tags:
+  - 'CSS Transitions'
+  - 'Web'
+description: "Hey world, this is my first attempt at a blog! I'll mostly be posting about front-end web development, but will eventually start [...]"
+---
+
+<button>test</button>
+
+- explain loading screen or preloader
+- show vid or gif or embedded animation of what it looks like
+
+```javascript
+window.onload = () => {
+  const preloader = document.getElementsByClassName('preloader')[0]
+  preloader.classList.add('preloader--finished')
+}
+```
+
+```css
+.preloader__ring {
+  animation: spin 1.2s linear infinite;
+  border: 6px solid white;
+  border-radius: 50%;
+  border-top: 6px solid $orange;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: auto;
+  z-index: 100;
+}
+```
+
+- preloader ring code is from https://www.w3schools.com/howto/howto_css_loader.asp
