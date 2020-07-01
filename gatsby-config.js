@@ -127,7 +127,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Noto Sans:300,400,500,700,900', 'Zilla Slab:400,500,600,700', 'Montserrat:300,300i,400,400i'],
+        fonts: ['Noto Sans:300,400,500', 'Zilla Slab:400,500,600,700'],
       },
     },
     'gatsby-plugin-sitemap',
@@ -168,6 +168,18 @@ module.exports = {
           }),
         ],
         precision: 8,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'BitBirdy',
+        short_name: 'BitBirdy',
+        start_url: '/',
+        background_color: '#1b1e24',
+        theme_color: '#4bb1da',
+        display: 'standalone',
+        icon: 'src/images/icon.png',
       },
     },
   ],
