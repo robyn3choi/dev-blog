@@ -131,6 +131,16 @@
   }
 }
 
+h2 {
+  font-size: $typographic-base-font-size * 2.1;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: $typographic-base-font-size * 1.8;
+  font-weight: 300;
+}
+
 .dark {
   .post-single__meta-time,
   .post-single__footer-text {
@@ -180,6 +190,9 @@
         @include line-height(1.125);
         // @include margin-bottom(1.125);
       }
+    }
+    h2 {
+      font-size: $typographic-base-font-size * 2.7;
     }
   }
 }

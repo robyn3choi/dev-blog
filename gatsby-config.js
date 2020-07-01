@@ -1,7 +1,7 @@
-const lost = require('lost')
-const pxtorem = require('postcss-pxtorem')
+const lost = require('lost');
+const pxtorem = require('postcss-pxtorem');
 
-const url = 'https://lumen.netlify.com'
+const url = 'https://lumen.netlify.com';
 
 module.exports = {
   siteMetadata: {
@@ -102,6 +102,7 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
+        plugins: ['gatsby-remark-images'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -170,4 +171,4 @@ module.exports = {
       },
     },
   ],
-}
+};

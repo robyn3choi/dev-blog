@@ -4,7 +4,7 @@
 
 // Colors
 $color-base: #222;
-$color-primary: #2eaee0; //#88c0d0;
+$color-primary: #4bb1da; //#88c0d0;
 $color-secondary: #f57d4e;
 
 $color-very-dark-gray: #585858;
@@ -35,8 +35,8 @@ $typographic-link-s-font-color: $color-secondary;
 $typographic-leading: round(16 * ($typographic-root-font-size / 100) * $typographic-base-line-height);
 
 // Layout
-$layout-post-single-max-width: 1000px;
-$layout-post-single-width: $layout-post-single-max-width - 305px;
+$layout-post-single-max-width: 980px;
+$layout-post-single-width: $layout-post-single-max-width - 230px;
 
 $layout-width: 1070px;
 $layout-breakpoint-sm: 685px;

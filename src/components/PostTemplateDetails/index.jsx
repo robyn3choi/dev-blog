@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import moment from 'moment'
-import './style.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import moment from 'moment';
+import './style.scss';
 
 class PostTemplateDetails extends React.Component {
   render() {
-    const { subtitle, author } = this.props.data.site.siteMetadata
-    const post = this.props.data.mdx
-    const tags = post.fields.tagSlugs
-    const { previous, next } = this.props.pageContext
+    const { subtitle, author } = this.props.data.site.siteMetadata;
+    const post = this.props.data.mdx;
+    const tags = post.fields.tagSlugs;
+    const { previous, next } = this.props.pageContext;
 
     function renderTags() {
       return (
@@ -22,7 +22,7 @@ class PostTemplateDetails extends React.Component {
             </li>
           ))}
         </ul>
-      )
+      );
     }
 
     return (
@@ -39,7 +39,9 @@ class PostTemplateDetails extends React.Component {
             <span className="post-single__meta-divider">•</span>
             {tags && renderTags()}
           </div>
-          <MDXRenderer className="post-single__body">{post.body}</MDXRenderer>
+          <div className="post-single__body">
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </div>
         </div>
         <hr />
         <div className="post-single__footer">
@@ -78,8 +80,8 @@ class PostTemplateDetails extends React.Component {
           {/* {commentsBlock} */}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default PostTemplateDetails
+export default PostTemplateDetails;

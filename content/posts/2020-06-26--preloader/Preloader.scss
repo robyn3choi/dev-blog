@@ -1,0 +1,98 @@
+@import '../../../src/assets/scss/variables';
+
+.demo {
+  position: relative;
+}
+
+.your-website {
+  position: relative;
+  height: 300px;
+  width: 60%;
+  min-width: 320px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.your-website__content {
+  font-size: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.preloader__wall {
+  position: absolute;
+  background: $color-primary;
+  width: 50%;
+  height: 100%;
+  outline: solid 1px $color-primary;
+  transition: none;
+  z-index: 100;
+
+  &--left {
+    left: -50%;
+    transform: translateX(100%);
+  }
+
+  &--right {
+    right: -50%;
+    transform: translateX(-100%);
+  }
+}
+
+.preloader__ring {
+  animation: spin 1.2s linear infinite;
+  border: 6px solid white;
+  border-radius: 50%;
+  border-top: 6px solid $color-secondary;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: auto;
+  z-index: 100;
+}
+
+.preloader--finished {
+  .preloader__wall {
+    transform: none;
+    transition: transform 0.7s 0.2s;
+    outline: none;
+  }
+
+  .preloader__ring {
+    display: none;
+  }
+}
+
+.preloader__reset-button {
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+.dark .preloader__reset-button {
+  color: white;
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

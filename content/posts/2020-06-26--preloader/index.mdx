@@ -1,0 +1,158 @@
+---
+title: How to make a preloader
+date: '2020-07-01'
+layout: post
+draft: false
+path: '/posts/preloader/'
+category: ''
+tags:
+  - 'CSS Animations'
+  - 'CSS Transitions'
+  - 'JS Events'
+  - 'Web'
+description: 'A pretty loading screen for people to look at while your website loads.'
+---
+
+import Preloader from './Preloader.jsx';
+
+If your website contains lots of images, users might see them load onto the page one by one. This is perfectly fine most
+of the time, but in some cases, you may want all your assets to load before your users see any real content - perhaps to
+give your users a more cohesive visual experience when they enter your site. To do this, We're going to create this
+preloader:
+
+<br />
+
+<Preloader />
+
+<br />
+
+For a real-life example, visit my [portfolio website](robynchoi.me) and check out its
+[GitHub repo](https://github.com/robyn3choi/robyn-portfolio-2019). (If, for some reason, you don't enjoy meticulously
+sifting through unfamiliar code to find the parts you need, here are the relevant
+[HTML](https://github.com/robyn3choi/robyn-portfolio-2019/blob/master/public/index.html),
+[SCSS](https://github.com/robyn3choi/robyn-portfolio-2019/tree/master/src/styles/general.scss), and
+[JavaScript](https://github.com/robyn3choi/robyn-portfolio-2019/tree/master/src/scripts/main.js).)
+
+## HTML
+
+First, let's write the HTML. Put this block at the top level of your site - you could place it as a direct child of the
+`<body>` tag, or as a child of whatever element contains your site's main content.
+
+```HTML
+<div class="preloader">
+  <div class="preloader__wall preloader__wall--left"></div>
+  <div class="preloader__wall preloader__wall--right"></div>
+  <div class="preloader__spinner"></div>
+</div>
+```
+
+## SCSS
+
+### The Walls
+
+Now for the fun stuff! This will place the preloader walls side-by-side and make each one cover its half of the window.
+
+```scss
+.preloader__wall {
+  background: #2eaee0;
+  outline: solid 1px #2eaee0; // prevents 1px gap between the walls
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  transition: transform 0.7s 0.2s;
+  z-index: 100;
+
+  &--left {
+    left: -50%;
+    transform: translateX(100%);
+  }
+
+  &--right {
+    right: -50%;
+    transform: translateX(-100%);
+  }
+}
+```
+
+Because each wall has `width: 50%` and `left: -50%` or `right: -50%`, they would actually be positioned outside of the
+window if it weren't for their `transform` properties. Later, we're going to set `transform: none` to move each wall out
+of the window when the rest of your website is done loading.
+
+It might be helpful to read up on the [transition](https://css-tricks.com/almanac/properties/t/transition/) and
+[transform](https://css-tricks.com/almanac/properties/t/transform/) properties.
+
+### The Spinner
+
+I adapted the spinner from [this example](https://www.w3schools.com/howto/howto_css_loader.asp). It's basically a
+rotating object with a multicolored border. Try temporarily commenting out the `border-radius` to see what I mean.
+
+```scss
+.preloader__spinner {
+  border: 6px solid white;
+  border-top: 6px solid #f57d4e;
+  border-radius: 50%;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.2s linear infinite;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: auto;
+  z-index: 100;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+```
+
+It might be helpful to read up on the [animation](https://css-tricks.com/almanac/properties/a/animation/) property.
+
+### The "Finished" State
+
+We're going to add the `preloader--finished` class onto the `preloader` element with a bit of JavaScript in the next
+section. This will move the preloader walls out of the window and hide the spinner.
+
+```scss
+.preloader--finished {
+  .preloader__wall {
+    transform: none;
+    outline: none;
+  }
+
+  .preloader__spinner {
+    display: none;
+  }
+}
+```
+
+## JavaScript
+
+Now all we have to do is put the preloader into its finished state when the page is done loading. The window's `onload`
+event fires when all the content on the page (including the DOM, images, scripts, etc.) has loaded, so we're going to
+set a handler function to this event that finds the `preloader` element and adds the `preloader--finished` class to it.
+
+```javascript
+window.onload = () => {
+  const preloader = document.getElementsByClassName('preloader')[0];
+  preloader.classList.add('preloader--finished');
+};
+```
+
+<br />
+
+You could alternatively use `addEventListener` like below. This is useful when you want to add multiple listeners to the
+event.
+
+```javascript
+window.addEventListener('load', () => {
+  const preloader = document.getElementsByClassName('preloader')[0];
+  preloader.classList.add('preloader--finished');
+});
+```
