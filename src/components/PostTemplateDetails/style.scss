@@ -146,6 +146,11 @@ h3 {
   .post-single__footer-text {
     color: $color-light-gray;
   }
+
+  .post-single__tag-link:hover,
+  .post-single__tag-link:focus {
+    color: $color-background--dm;
+  }
 }
 
 @include breakpoint-sm {

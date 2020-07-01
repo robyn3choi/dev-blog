@@ -60,7 +60,7 @@
       padding: 2px 8px;
       &:hover,
       &:focus {
-        color: white; //$color-base;
+        color: white;
         background: $color-primary; //darken($color-gray-bg, 5%);
         //border: 0;
       }
@@ -79,5 +79,10 @@
 
   .post__meta-time {
     color: $color-light-gray;
+  }
+
+  .post__tag-link:hover,
+  .post__tag-link:focus {
+    color: $color-background--dm;
   }
 }
