@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import kebabCase from 'lodash/kebabCase'
-import Layout from '../components/Layout'
-import Sidebar from '../components/Sidebar'
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import kebabCase from 'lodash/kebabCase';
+import Layout from '../components/Layout';
+import Sidebar from '../components/Sidebar';
 
 class TagsRoute extends React.Component {
   render() {
-    const { title } = this.props.data.site.siteMetadata
-    const tags = this.props.data.allMdx.group
+    const { title } = this.props.data.site.siteMetadata;
+    const tags = this.props.data.allMdx.group;
 
     return (
       <Layout>
@@ -22,7 +22,7 @@ class TagsRoute extends React.Component {
                 <div className="page__body">
                   <div className="tags">
                     <ul className="tags__list">
-                      {tags.map(tag => (
+                      {tags.map((tag) => (
                         <li key={tag.fieldValue} className="tags__list-item">
                           <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="tags__list-item-link">
                             {tag.fieldValue} ({tag.totalCount})
@@ -37,11 +37,11 @@ class TagsRoute extends React.Component {
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default TagsRoute
+export default TagsRoute;
 
 export const pageQuery = graphql`
   query TagsQuery {
@@ -58,6 +58,10 @@ export const pageQuery = graphql`
           name
           email
           github
+          linkedin
+          reddit
+          portfolio
+          twitter
         }
       }
     }
@@ -68,4 +72,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
