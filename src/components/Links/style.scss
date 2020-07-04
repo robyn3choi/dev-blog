@@ -28,3 +28,13 @@
     }
   }
 }
+
+.dark {
+  .links__list .links__list-item a i {
+    color: $color-primary--dm;
+    &:hover,
+    &:focus {
+      color: $color-secondary;
+    }
+  }
+}

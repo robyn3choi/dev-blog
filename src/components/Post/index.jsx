@@ -1,24 +1,24 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import moment from 'moment'
-import './style.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import moment from 'moment';
+import './style.scss';
 
 export default function Post(props) {
-  const { title, date, description, tags } = props.data.node.frontmatter
-  const { slug, tagSlugs } = props.data.node.fields
+  const { title, date, description, tags } = props.data.node.frontmatter;
+  const { slug, tagSlugs } = props.data.node.fields;
 
   function renderTags() {
     return (
-      <ul className="post__tags">
+      <ul className="post__tags tags">
         {tags.map((tag, i) => (
-          <li className="post__tag" key={tag}>
-            <Link to={tagSlugs[i]} className="post__tag-link">
+          <li className="post__tag tag" key={tag}>
+            <Link to={tagSlugs[i]} className="post__tag-link tag-link">
               {tags[i]}
             </Link>
           </li>
         ))}
       </ul>
-    )
+    );
   }
 
   return (
@@ -40,5 +40,5 @@ export default function Post(props) {
         {tags && renderTags()}
       </div>
     </div>
-  )
+  );
 }

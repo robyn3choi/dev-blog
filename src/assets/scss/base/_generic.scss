@@ -41,14 +41,16 @@ h1 {
 }
 
 h2 {
-  font-size: $typographic-base-font-size * 1.6875;
+  font-size: $typographic-base-font-size * 2.1;
+  font-weight: 600;
   @include line-height(1.5);
   @include margin-top(2);
   @include margin-bottom(0.5);
 }
 
 h3 {
-  font-size: $typographic-base-font-size * 1.375;
+  font-size: $typographic-base-font-size * 1.8;
+  font-weight: 500;
   @include line-height(1);
   @include margin-top(2);
   @include margin-bottom(0.5);
@@ -84,8 +86,8 @@ img {
 
 hr {
   width: 40px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: 10px;
   background: $color-dark-gray;
   border: none;
@@ -98,10 +100,17 @@ hr {
 }
 
 a {
-  color: $typographic-link-p-font-color;
+  color: $color-primary;
   text-decoration: none;
   &:hover {
-    color: $typographic-link-s-font-color;
+    color: $color-secondary;
+  }
+}
+
+.dark a {
+  color: $color-primary--dm;
+  &:hover {
+    color: $color-secondary;
   }
 }
 

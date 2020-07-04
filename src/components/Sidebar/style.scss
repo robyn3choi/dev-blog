@@ -44,6 +44,9 @@
 }
 
 .dark {
+  .sidebar__author-title-link {
+    color: $color-primary--dm;
+  }
   .sidebar__author-subtitle {
     color: $color-light-gray;
   }

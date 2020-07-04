@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import moment from 'moment';
+import Links from '../Links';
 import './style.scss';
 
 class PostTemplateDetails extends React.Component {
@@ -13,10 +14,10 @@ class PostTemplateDetails extends React.Component {
 
     function renderTags() {
       return (
-        <ul className="post-single__tags">
+        <ul className="post-single__tags tags">
           {tags.map((tag, i) => (
-            <li className="post-single__tag" key={tag}>
-              <Link to={tags[i]} className="post-single__tag-link">
+            <li className="post-single__tag tag" key={tag}>
+              <Link to={tags[i]} className="post-single__tag-link tag-link">
                 {post.frontmatter.tags[i]}
               </Link>
             </li>
@@ -53,6 +54,7 @@ class PostTemplateDetails extends React.Component {
             </a>
             .
           </p>
+          <Links data={author} />
           <div className="post-single__footer-nav">
             <div className="post-single__footer-nav-link">
               {previous && (
@@ -76,8 +78,6 @@ class PostTemplateDetails extends React.Component {
               )}
             </div>
           </div>
-
-          {/* {commentsBlock} */}
         </div>
       </div>
     );
