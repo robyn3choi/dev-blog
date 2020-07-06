@@ -9,9 +9,9 @@
     margin: 0;
     &-item {
       padding: 0;
-      margin: 5px 0;
+      margin: 3px 0;
       &-link {
-        font-size: $typographic-base-font-size * 1.5;
+        font-size: $typographic-base-font-size * 1.35;
         color: $typographic-base-font-color;
         font-family: $typographic-font-family--heading;
         &:hover,
