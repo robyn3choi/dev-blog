@@ -17,7 +17,7 @@ import Preloader from './Preloader.jsx';
 
 If your website contains lots of images, users might see them load onto the page one by one. This is perfectly fine most
 of the time, but in some cases, you may want all your assets to load before your users see any real content - perhaps to
-give your users a more cohesive visual experience when they enter your site. To do this, We're going to create this
+give your users a more cohesive visual experience when they enter your site. To achieve that, we're going to build this
 preloader:
 
 <br />
@@ -27,15 +27,15 @@ preloader:
 <br />
 
 For a real-life example, visit my [portfolio website](robynchoi.me) and check out its
-[GitHub repo](https://github.com/robyn3choi/robyn-portfolio-2019). (If, for some reason, you don't enjoy meticulously
-sifting through unfamiliar code to find the parts you need, here are the relevant
+[GitHub repo](https://github.com/robyn3choi/robyn-portfolio-2019). In case you don't have time to meticulously sift
+through unfamiliar code, here are the relevant
 [HTML](https://github.com/robyn3choi/robyn-portfolio-2019/blob/master/public/index.html),
 [SCSS](https://github.com/robyn3choi/robyn-portfolio-2019/tree/master/src/styles/general.scss), and
-[JavaScript](https://github.com/robyn3choi/robyn-portfolio-2019/tree/master/src/scripts/main.js).)
+[JavaScript](https://github.com/robyn3choi/robyn-portfolio-2019/tree/master/src/scripts/main.js).
 
 ## HTML
 
-First, let's write the HTML. Put this block at the top level of your site - you could place it as a direct child of the
+Let's start with the HTML. Put this block at the top level of your site - you could place it as a direct child of the
 `<body>` tag, or as a child of whatever element contains your site's main content.
 
 ```HTML
@@ -94,12 +94,12 @@ rotating object with a multicolored border. Try temporarily commenting out the `
   position: fixed;
   width: 60px;
   height: 60px;
-  animation: spin 1.2s linear infinite;
   left: 0;
   right: 0;
   top: 50%;
   margin: auto;
   z-index: 100;
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {

@@ -29,7 +29,7 @@ export default function Preloader() {
           <div className="preloader__ring" />
         </div>
         <div className="your-website__content">Your Beautiful Website!</div>
-        <button className="preloader__reset-button" type="button" onClick={reset} disabled={isPlaying}>
+        <button className="preloader__reset-button" type="button" onClick={reset} disabled={isPlaying} tabIndex={0}>
           <i className="icon-arrows-cw" />
         </button>
       </div>
