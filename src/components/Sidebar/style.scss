@@ -21,6 +21,7 @@
       font-size: $typographic-base-font-size * 1.8;
       @include line-height(1.125);
       @include margin(0.5, 0, 0.5, 0);
+      font-weight: 400;
       &-link {
         color: $color-primary;
       }
