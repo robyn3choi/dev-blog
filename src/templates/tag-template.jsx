@@ -1,9 +1,9 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 import TagTemplateDetails from '../components/TagTemplateDetails';
+import SEO from '../components/SEO';
 
 class TagTemplate extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class TagTemplate extends React.Component {
     return (
       <Layout>
         <div>
-          <Helmet title={`All Posts tagged as "${tag}" - ${title}`} />
+          <SEO title={`All Posts tagged as "${tag}"`} />
           <Sidebar {...this.props} />
           <TagTemplateDetails {...this.props} />
         </div>

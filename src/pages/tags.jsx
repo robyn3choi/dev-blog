@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import kebabCase from 'lodash/kebabCase';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
+import SEO from '../components/SEO';
 
 class TagsRoute extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class TagsRoute extends React.Component {
     return (
       <Layout>
         <div>
-          <Helmet title={`All Tags - ${title}`} />
+          <SEO title={`All Tags`} />
           <Sidebar {...this.props} />
           <div className="content">
             <div className="content__inner">

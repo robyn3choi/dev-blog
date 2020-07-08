@@ -1,23 +1,23 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import PostTemplateDetails from '../components/PostTemplateDetails';
+import SEO from '../components/SEO';
 
 class PostTemplate extends React.Component {
   render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
+    const { subtitle } = this.props.data.site.siteMetadata;
     const post = this.props.data.mdx;
-    const { title: postTitle, description: postDescription } = post.frontmatter;
+    const { title: postTitle, description: postDescription, ogimage } = post.frontmatter;
+
     const description = postDescription !== null ? postDescription : subtitle;
+    const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src;
+    console.log(ogImagePath);
 
     return (
       <Layout>
         <div>
-          <Helmet>
-            <title>{`${postTitle} - ${title}`}</title>
-            <meta name="description" content={description} />
-          </Helmet>
+          <SEO title={`${postTitle}`} description={description} image={ogImagePath} />
           <PostTemplateDetails {...this.props} />
         </div>
       </Layout>
@@ -59,6 +59,13 @@ export const pageQuery = graphql`
         tags
         date
         description
+        ogimage {
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
       }
     }
   }

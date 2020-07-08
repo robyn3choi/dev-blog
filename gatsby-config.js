@@ -1,7 +1,7 @@
 const lost = require('lost');
 const pxtorem = require('postcss-pxtorem');
 
-const url = 'https://lumen.netlify.com';
+const url = 'https://bitbirdy.dev';
 
 module.exports = {
   siteMetadata: {
@@ -10,6 +10,7 @@ module.exports = {
     title: 'BitBirdy',
     subtitle:
       'A front-end web development blog by Robyn Choi, a professional JavaScripter and amateur pixel artist in Vancouver, BC.',
+    description: 'A front-end web development blog by Robyn Choi.',
     copyright: '© 2020 Robyn Choi',
     disqusShortname: '',
     menu: [
@@ -22,7 +23,7 @@ module.exports = {
         path: '/tags',
       },
       {
-        label: 'About me',
+        label: 'About',
         path: '/about/',
       },
     ],
@@ -186,5 +187,19 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-next-seo',
+    //   options: {
+    //     openGraph: {
+    //       type: 'website',
+    //       url: 'https://bitbirdy.dev/',
+    //       site_name: 'BitBirdy',
+    //     },
+    //     twitter: {
+    //       handle: '@_bitbirdy',
+    //       cardType: 'summary_large_image',
+    //     },
+    //   },
+    // },
   ],
 };
