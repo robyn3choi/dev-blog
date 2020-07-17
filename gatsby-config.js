@@ -30,7 +30,7 @@ module.exports = {
     author: {
       name: 'BitBirdy',
       email: 'robyn3choi@gmail.com',
-      twitter: 'https://twitter.com/BitBirdyDev',
+      twitter: 'https://twitter.com/_bitbirdy',
       github: 'https://github.com/robyn3choi',
       linkedin: 'https://www.linkedin.com/in/robyn-choi',
       reddit: 'https://www.reddit.com/user/bitbirdy',
