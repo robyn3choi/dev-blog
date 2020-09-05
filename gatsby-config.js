@@ -107,7 +107,7 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
-        plugins: ['gatsby-remark-images'],
+        plugins: ['gatsby-remark-embed-video', 'gatsby-remark-images'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
@@ -116,6 +116,16 @@ module.exports = {
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
+          },
+          {
+            resolve: 'gatsby-remark-embed-video',
+            options: {
+              width: 800,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              //noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
+              containerClass: 'embedVideo-container', //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
+            },
           },
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
@@ -132,7 +142,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Noto Sans:300,400,500', 'Zilla Slab:400,500,600,700', 'Fira Code'],
+        fonts: ['Noto Sans:300,400,700', 'Zilla Slab:400,500,600,700', 'Fira Code'],
       },
     },
     'gatsby-plugin-sitemap',

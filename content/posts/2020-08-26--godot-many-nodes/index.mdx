@@ -1,0 +1,195 @@
+---
+title: Optimizing 1000 physics bodies in Godot Engine
+date: '2020-09-05'
+layout: post
+draft: false
+path: '/posts/godot-1000-bodies/'
+category: ''
+tags:
+  - 'Games'
+  - 'Godot Engine'
+description: 'Experimenting with multithreading to achieve 60fps.'
+ogimage: './image.png'
+---
+
+I recently participated in this year's [GMTK Game Jam](https://itch.io/jam/gmtk-2020) as a solo developer and managed to
+finish my first Godot Engine game, [Mimic](https://bitbirdy.itch.io/mimic).
+
+Here's a little clip:
+
+`video: https://www.youtube.com/embed/TsdhHQHkIB4`
+
+As you can see, it involves having several moving nodes (KinematicBody2Ds). The more of them there are, the lower the
+framerate becomes (not shown in the video). There would occasionally be so many nodes that the framerate would drop well
+below 30fps.
+
+It seemed like many others were having similar problems so I thought I'd investigate how to optimize many moving physics
+bodies. I set up a [demo project](https://github.com/robyn3choi/optimizing-many-nodes) that spawns 1000 bodies and moves
+them around. It includes a singlethreaded (ST) version and a multithreaded (MT) version. We'll be going over them in
+this article.
+
+Here's what it looks like:
+
+`video: https://www.youtube.com/embed/8_H2EhrdVrk`
+
+<p class="annotation">
+  * Fun fact - I made half of them rotate the opposite direction because watching them all rotate in the same direction
+  looked even more nauseating!
+</p>
+
+Before reading further, make sure you've read about multithreading in the
+[Godot Engine docs](https://docs.godotengine.org/en/stable/tutorials/threads/using_multiple_threads.html).
+
+## Running on a single thread
+
+`Singlethreaded.tscn` contains `BodySpawnerST` which spawns 1000 bodies at random positions on the screen and randomizes
+their rotation directions (`body.left`) when the scene loads.
+
+```gdscript
+# BodySpawnerST.gd
+extends Node
+
+var body_scene = preload("res://Singlethreaded/BodyST.tscn")
+var rng = RandomNumberGenerator.new()
+
+func _ready() -> void:
+	rng.randomize()
+
+	for i in 1000:
+		var body = body_scene.instance()
+		var screen_size = get_viewport().get_visible_rect().size
+		var x = rng.randi_range(0, screen_size.x)
+		var y = rng.randi_range(0, screen_size.y)
+		body.position = Vector2(x, y)
+		body.left = i % 2 == 0
+		add_child(body)
+```
+
+<br />
+
+Each body moves and rotates on every physics update. My original game used `KinematicBody2D` instead of `Area2D` for the
+bodies, but I realized that they should have been using `Area2D` with `monitoring` unchecked and `monitorable` checked,
+since I didn't need the bodies to bounce off anything. So that's what we're going to use here.
+
+```gdscript
+# BodyST.gd
+extends Area2D
+
+var left = false
+var speed = 50
+
+func _physics_process(delta: float) -> void:
+	move(delta)
+
+
+func move(delta):
+	var velocity = Vector2(5, 0) * speed * delta
+
+	if left:
+		rotation_degrees -= 4 * speed * delta
+	else:
+		rotation_degrees += 4 * speed * delta
+
+	position += (velocity.rotated(deg2rad(rotation_degrees)))
+```
+
+<br />
+
+When you play `Singlethreaded.tscn`, `BodySpawnerST` will do its thing and the bodies will cause the game to run at
+~3fps. Using `_process` instead of `_physics_process` brings it up to ~22fps. I suspect this is because
+`_physics_process` is forced to run every 1/60th of a second, but the time it take to move each body is longer than
+that.
+
+Having both `monitoring` and `monitorable` checked in `BodyST`'s `Area2D` brings the framerate down to ~18fps, and
+unchecking both results in 120fps (my maximum framerate), which is the same as not having using `Area2D` at all.
+
+(My fps measurements may not match yours if you download my project and run it.)
+
+Now it's time to optimize!
+
+## Running on multiple threads
+
+In the multithreaded version, instead of each body calling its own `move` function every frame, `BodySpawnerMT` divides
+the bodies among multiple threads which call each body's `move` function concurrently, every frame. So if there are 12
+threads, each thread will be in charge of 1000/12 = 83 bodies with the last thread handling the 4 remainder bodies.
+
+```gdscript
+# BodySpawnerMT.gd
+extends Node
+
+var body_scene = preload("res://Multithreaded/BodyMT.tscn")
+var rng = RandomNumberGenerator.new()
+var bodies = []
+var threads = []
+var num_threads = 12
+
+func _ready() -> void:
+	rng.randomize()
+
+	for i in num_threads:
+		var thread = Thread.new()
+		threads.push_back(thread)
+
+	for i in 1000:
+		var body = body_scene.instance()
+		var screen_size = get_viewport().get_visible_rect().size
+		var x = rng.randi_range(0, screen_size.x)
+		var y = rng.randi_range(0, screen_size.y)
+		body.position = Vector2(x, y)
+		body.left = i % 2 == 0
+		add_child(body)
+		bodies.push_back(body)
+
+
+func _process(delta):
+	for i in num_threads:
+		threads[i].start(self, "move_bodies", {"delta": delta, "index": i})
+
+	for i in num_threads:
+		threads[i].wait_to_finish()
+
+
+func move_bodies(args):
+	# find start and end index in bodies that this thread will operate on
+	var start = bodies.size() / num_threads * args.index
+	var end = start + bodies.size() / num_threads
+	# if the number of bodies is not divisible by num_threads,
+	# add the remainder to the last thread
+	if args.index == threads.size() - 1:
+		end += bodies.size() % num_threads
+	for i in range(start, end):
+		bodies[i].move(args.delta)
+```
+
+Using multiple threads successfully gets the framerate to reach 60fps (and beyond)!
+
+## Things to note
+
+1.  **You cannot use Godot's physics engine in threads other than the main thread.** While I was still experimenting
+    with `BodyMT` as a `KinematicBody2D`, I realized that calling `move_and_collide` in `BodyMT`'s `move` function threw
+    this error:
+
+    ```
+    body_test_motion: Condition "main_thread != Thread::get_caller_id()" is true. Returned: false
+    <C++ Source> servers/physics_2d/physics_2d_server_wrap_mt.h:260 @ body_test_motion()
+    ```
+
+    So I dug into Godot's source and found the
+    [file in question](https://github.com/godotengine/godot/blob/master/servers/physics_2d/physics_server_2d_wrap_mt.h).
+    The `body_test_motion` function contained this line
+    `ERR_FAIL_COND_V(main_thread != Thread::get_caller_id(), false);`. I could be wrong since I'm not at all familiar
+    with this codebase, but it looks like it throws an error if it isn't called by the main thread.
+
+    It also appears that you can't use your own threads in `_physics_process`. Using `_physics_process` instead of
+    `_process` in `BodySpawnerMT` will cause the scene freeze at the Godot splash screen when you try playing it.
+
+2.  **The framerate starts low and increases over the span of several seconds, depending on how many threads we use.**
+    On my machine, using 4 threads takes 31 seconds to reach 60fps, 8 threads takes 10 seconds, and 12 threads or more
+    takes 6 seconds. I never figured out why it takes time for the framerate to increase. I even
+    [posted about this on Reddit](https://www.reddit.com/r/godot/comments/iewqoz/why_does_multithreading_increase_the_framerate/)
+    and still haven't found an answer. If you know why this happens, feel free to message me or reply on the Reddit
+    post.
+
+Using multiple threads isn't the only way to get a performance boost but it's an interesting one worth exploring. I'm
+thinking of redoing this project as GDNative modules written in Rust sometime to see how much it increases performance.
+Let me know if that's something you'd be interested in reading about!
