@@ -38,7 +38,7 @@
     "gatsby-transformer-sharp": "^2.5.7",
     "lodash": "^4.17.4",
     "node-sass": "^4.9.3",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.21.0",
     "react": "^16.5.2",
     "react-disqus-comments": "^1.2.0",
     "react-dom": "^16.5.2",
