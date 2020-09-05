@@ -9,8 +9,8 @@ module.exports = {
     siteUrl: url,
     title: 'BitBirdy',
     subtitle:
-      'A front-end web development blog by Robyn Choi, a professional JavaScripter and amateur pixel artist in Vancouver, BC.',
-    description: 'A front-end web development blog by Robyn Choi.',
+      'A web/game programming blog by Robyn Choi, a professional JavaScripter and amateur pixel artist in Vancouver, BC.',
+    description: 'A web/game programming blog by Robyn Choi. I also like mechanical keyboards.',
     copyright: '© 2020 Robyn Choi',
     disqusShortname: '',
     menu: [
@@ -107,25 +107,22 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
-        plugins: ['gatsby-remark-embed-video', 'gatsby-remark-images'],
+        plugins: ['gatsby-remark-embed-video', 'gatsby-remark-images', 'gatsby-remark-responsive-iframe'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: { maxWidth: 960 },
           },
           {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
-          },
-          {
             resolve: 'gatsby-remark-embed-video',
             options: {
               width: 800,
-              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
               related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
-              //noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
-              containerClass: 'embedVideo-container', //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
             },
+          },
+          {
+            resolve: 'gatsby-remark-responsive-iframe',
+            options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
           },
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
