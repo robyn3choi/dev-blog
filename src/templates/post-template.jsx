@@ -12,7 +12,6 @@ class PostTemplate extends React.Component {
 
     const description = postDescription !== null ? postDescription : subtitle;
     const ogImagePath = ogimage && ogimage.childImageSharp.fixed.src;
-    console.log(ogImagePath);
 
     return (
       <Layout>
