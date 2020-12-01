@@ -7,7 +7,7 @@ path: '/posts/bullet-town-devlog-1/'
 category: ''
 tags:
   - 'Games'
-  - 'Godot'
+  - 'Godot Engine'
   - 'Pixel art'
 description: 'Making my dream game.'
 ---
