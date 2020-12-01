@@ -3,6 +3,7 @@ import get from 'lodash/get';
 import { Link } from 'gatsby';
 import Menu from '../Menu';
 import Links from '../Links';
+import EmailSubscribe from '../EmailSubscribe';
 import profilePic from './bitbirdy.png';
 import './style.scss';
 
@@ -50,6 +51,7 @@ class Sidebar extends React.Component {
           <div>
             <Menu data={menu} />
             <Links data={author} />
+            <EmailSubscribe />
             <p className="sidebar__copyright">{copyright}</p>
           </div>
         </div>

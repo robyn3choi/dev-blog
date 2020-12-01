@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import moment from 'moment';
 import Links from '../Links';
+import EmailSubscribe from '../EmailSubscribe';
 import './style.scss';
 
 class PostTemplateDetails extends React.Component {
@@ -78,6 +79,7 @@ class PostTemplateDetails extends React.Component {
               )}
             </div>
           </div>
+          <EmailSubscribe isInFooter />
         </div>
       </div>
     );

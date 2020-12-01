@@ -10,7 +10,7 @@
     left: 16px;
   }
   &__inner {
-    max-width: $layout-post-single-max-width;
+    max-width: $layout-post-single-width;
     padding: 0 15px;
     margin: 0 auto;
   }
@@ -78,7 +78,7 @@
       text-decoration: underline;
     }
     & :not(div) {
-      max-width: $layout-post-single-width;
+      //max-width: $layout-post-single-width;
       margin-left: auto;
       margin-right: auto;
     }

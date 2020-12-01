@@ -1,0 +1,64 @@
+@import '../../assets/scss/variables';
+
+.emailoctopus-form-default.emailoctopus-form-wrapper h2.email-subscribe__heading {
+  color: $typographic-base-font-color;
+  font-size: 1.5rem;
+  margin-bottom: -8px;
+}
+
+.email-subscribe__input-label {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.emailoctopus-form-default .emailoctopus-form-row input.email-subscribe__input {
+  width: 94%;
+  max-width: 320px;
+}
+
+.emailoctopus-form-default .emailoctopus-form-row-subscribe button.email-subscribe__button {
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-family: $typographic-font-family--heading;
+  background-color: $color-primary;
+  padding: 8px 12px;
+  color: white;
+  margin-top: -6px;
+
+  &:hover,
+  &:focus {
+    background-color: $color-secondary;
+  }
+}
+
+.email-subscribe p.emailoctopus-error-message {
+  color: $typographic-base-font-color;
+}
+
+.email-subscribe--in-footer {
+  text-align: center;
+
+  .emailoctopus-form-row-subscribe button.email-subscribe__button {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.dark {
+  .emailoctopus-form-default.emailoctopus-form-wrapper h2.email-subscribe__heading,
+  .email-subscribe p {
+    color: $typographic-base-font-color--dm;
+  }
+
+  .emailoctopus-form-default .emailoctopus-form-row input.email-subscribe__input {
+    background-color: $typographic-base-font-color--dm;
+  }
+
+  .emailoctopus-form-default .emailoctopus-form-row-subscribe button.email-subscribe__button {
+    color: $color-background--dm;
+  }
+}
