@@ -7,16 +7,23 @@
     position: relative;
     padding: 25px 20px 0;
   }
+  &__avatar {
+    display: inline-block;
+    margin-bottom: 0;
+    //border-radius: 50%;
+    //background-clip: padding-box;
+    //image-rendering: pixelated;
+    //-ms-interpolation-mode: nearest-neighbor; // for IE11
+  }
+  &__avatar-background {
+    height: 200px;
+    width: 200px;
+    background-color: #39b0d3;
+    border-radius: 50%;
+    display: inline-block;
+  }
   &__author {
     text-align: center;
-    &-photo {
-      display: inline-block;
-      margin-bottom: 0;
-      //border-radius: 50%;
-      //background-clip: padding-box;
-      image-rendering: pixelated;
-      -ms-interpolation-mode: nearest-neighbor; // for IE11
-    }
     &-title {
       font-size: $typographic-base-font-size * 1.8;
       @include line-height(1.125);

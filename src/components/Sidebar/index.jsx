@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Menu from '../Menu';
 import Links from '../Links';
 import EmailSubscribe from '../EmailSubscribe';
-import profilePic from './bitbirdy.png';
+import profilePic from './bitbirdy-face.png';
 import './style.scss';
 
 class Sidebar extends React.Component {
@@ -17,7 +17,8 @@ class Sidebar extends React.Component {
     const authorBlock = (
       <div>
         <Link to="/">
-          <img src={profilePic} className="sidebar__author-photo" width="138" alt={author.name} />
+          {/* <span className="sidebar__avatar-background" /> */}
+          <img src={profilePic} className="sidebar__avatar" alt={author.name} />
         </Link>
         {isHomePage ? (
           <h1 className="sidebar__author-title">
