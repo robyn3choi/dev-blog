@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import Menu from '../Menu';
 import Links from '../Links';
 import EmailSubscribe from '../EmailSubscribe';
-import profilePic from './bitbirdy-face.png';
+import profilePic from './bitbirdy.png';
 import './style.scss';
 
 class Sidebar extends React.Component {
