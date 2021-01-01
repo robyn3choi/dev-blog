@@ -1,9 +1,9 @@
 ---
-title: 'Bullet Town Devlog #1'
+title: 'Game Devlog #1: Starting with Art Style and Aiming'
 date: '2020-11-29'
 layout: post
 draft: false
-path: '/posts/bullet-town-devlog-1/'
+path: '/posts/game-devlog-1/'
 category: ''
 tags:
   - 'Games'
