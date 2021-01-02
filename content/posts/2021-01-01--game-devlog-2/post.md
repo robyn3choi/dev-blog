@@ -10,6 +10,7 @@ tags:
   - 'Godot Engine'
   - 'Pixel art'
 description: "Imagine Enter the Gungeon but you're a Siberian Husky."
+ogimage: './player-all-views.png'
 ---
 
 In my last post, I said that I'd post an update every 2-3 weeks. It's been about 2 months now so I apologize for that!
