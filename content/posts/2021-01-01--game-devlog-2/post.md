@@ -2,7 +2,7 @@
 title: 'Game Devlog #2: Player Sprites and More Aiming'
 date: '2021-01-01'
 layout: post
-draft: false
+draft: true
 path: '/posts/game-devlog-2/'
 category: ''
 tags:
@@ -11,6 +11,11 @@ tags:
   - 'Pixel art'
 description: "Imagine Enter the Gungeon but you're a Siberian Husky."
 ---
+
+In my last post, I said that I'd aim to post an update every 2-3 weeks. It's been about 2 months now so I apologize for
+that! It's been a hectic couple months for me, but I'm planning to post more regularly and even start a YouTube channel
+for this in 2021. I was tempted to ramble about the happenings of my life in 2020, but I think we've all done enough
+reflecting on this trashpile of a year so let's get right into it.
 
 ## Art
 
@@ -31,8 +36,13 @@ Here's how it looks with a static player sprite:
 
 ![Aiming](./aiming.gif)
 
-It took me a while to get the aiming right, and there were a few unexpected obstacles that we'll go over. My `Gun.gd`
-script is a bit long so we'll go through it in chunks. This is the main logic:
+Things are going to get very technical in this post, so I encourage you to
+[clone the project](https://github.com/robyn3choi/bullet-town/tree/ec40ee7b1373e7edf863156eed84e53bff7185e9) and follow
+along so that you can see the node hierarchy and better understand what's going on. To play around with the aiming
+mechanic, open and play the `Player.tscn` scene.
+
+Go ahead and open `Gun.tscn` and take a quick look at the node hierarchy before we jump into `Gun.gd`. Here's the main
+logic in that script:
 
 ```GDScript
 # Gun.gd
@@ -63,11 +73,12 @@ func _input(event):
 		look_at_aim_point(event.position)
 ```
 
-`left_pos` and `right_pos` are the positions of the player's left and right hands. The gun's position switches between
-these when certain rotation degrees are reached.
+`left_pos` and `right_pos` are the positions of the player's left and right hands (from our point of view, not the
+player character's). The gun's position switches between these when certain rotation degrees are reached.
 
-Ignore `is_switch_disabled` for now, we'll get into that in a bit. Here's the code that determines whether the gun has
-reached the rotation threshold to switch hands:
+### Switching hands
+
+This piece of code determines whether the gun has reached the rotation threshold to switch hands:
 
 ```GDScript
 func should_be_on_right():
@@ -82,6 +93,8 @@ it's pointing down, and when `rotation_degrees` is 270, it's pointing up. So if
 `rotation_degrees <= 90 || rotation_degrees > 270`, the gun is pointing toward the right and should be in the right
 hand. Otherwise, it should be in the left hand.
 
+### The switch buffer
+
 So what's `switch_buffer` doing in there? In the gif above, you'll notice that the gun doesn't switch hands right when
 the cursor crosses the 90° or 270° threshold. There's actually a buffer of 40° where the gun will not stay on its
 current hand. Without this buffer, the gun would rapidly switch back and forth between hands when its rotation was near
@@ -91,6 +104,22 @@ cursor, but now its rotation is actually less than 90°. Here's what happens wit
 
 ![Without switch_buffer](./without-buffer.gif)
 
+### Disabling the hand switch
+
+Even after all that, the buffer still wasn't enough to prevent this from happening when the cursor is close enough to
+the player for the gun's rotation after switching hands to exceed the switch rotation threshold plus the buffer. This is
+why I added `is_switch_disabled`. When `is_switch_disabled` is `true`, the gun will not switch hands even when the gun's
+rotation is at a point where it would normally would switch.
+
+```GDScript
+func is_switch_disabled():
+	# switching hands is disabled when the mouse cursor is close enough to the gun
+	var distance_to_aim_point = global_position.distance_squared_to(get_global_mouse_position())
+	return distance_to_aim_point < switch_disable_distance
+```
+
+### Actually switching hands
+
 This is how the gun actually switches hands:
 
 ```GDScript
@@ -98,7 +127,6 @@ func switch_to_left():
 	# flip the sprite
 	$Sprite.scale = Vector2(1, -1)
 	# shift the sprite so it looks like it flipped along the bottom of the sprite instead of the middle
-	# without this, it look
 	$Sprite.position.y += $Sprite.texture.get_height()
 	# go to the left hand
 	position = left_pos
@@ -112,10 +140,37 @@ func switch_to_right():
 
 ```
 
-Without `$Sprite.position.y += $Sprite.texture.get_height()` and the inverse, this is what would happen:
+Without `$Sprite.position.y += $Sprite.texture.get_height()` and the inverse, this is what would happen (notice what
+happens when the gun is on the left):
 
 ![Without shifting $Sprite.position.y](./without-shift.gif)
 
-When `is_switch_disabled` is `true`, the gun will not switch hands even when the gun's rotation is at a point where it
-would normally would switch. This was necessary to prevent the gun from rapidly switching hands when the gun's rotation
-was near the threshold.
+### Tweaking the gun's look_at
+
+Finally, we need to actually point the gun at the cursor:
+
+```GDScript
+func look_at_target(cursor_pos):
+	var look_at_pos = cursor_pos;
+	var multipler = -1 if is_on_right else 1
+	look_at_pos += transform.y * muzzle_offset_y * multipler
+	look_at(look_at_pos)
+```
+
+`look_at` is a
+[handy Node2D function](https://docs.godotengine.org/en/stable/classes/class_node2d.html#class-node2d-method-look-at)
+that rotates an object to face a specified position, like a gun to its target. Unfortunately, getting the gun to point
+to the cursor wasn't as simple as `look_at(cursor_pos)`. Here's what happened when I had only that one line of code:
+
+![Without adjusting look_at](./lookat.gif)
+
+It's subtle, but you'll see that the gun's barrel or muzzle is not pointing at the cursor. Because the gun object's
+origin is in the handle of the gun, the handle what points to the cursor when you use `look_at`. Take another look at
+the node hierarchy in `Gun.tscn` and notice the position of the `Sprite` node in relation to the `Gun` node. I set it up
+this way so that the gun would rotate around the handle as its pivot point.
+
+To counteract this, I used a
+[code snippet I found in the Unity forums](https://answers.unity.com/questions/674674/simple-lookat-rotation-with-offset-pivot.html)
+(the first snippet in the first reply). It basically takes distance between the gun's origin and the muzzle, and adds it
+to the cursor position (or subtracts it, depending on which side the gun is on). Then `look_at` is called with the new
+target position.
