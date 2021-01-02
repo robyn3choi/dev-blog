@@ -1,5 +1,5 @@
 ---
-title: 'Game Devlog #1: Starting with Art Style and Aiming'
+title: 'Game Devlog #1: Art Style and Aiming'
 date: '2020-11-29'
 layout: post
 draft: false
