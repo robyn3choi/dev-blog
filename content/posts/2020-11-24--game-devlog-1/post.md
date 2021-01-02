@@ -10,6 +10,7 @@ tags:
   - 'Godot Engine'
   - 'Pixel art'
 description: 'Making my dream game.'
+ogimage: './player2.png'
 ---
 
 A couple weeks ago, I came up with an idea for a story-driven bullet hell game. You, the player, live in a town full of
@@ -33,7 +34,7 @@ character:
 
 ![Player 1](./player1.png)
 
-After an unsuccessful attempt to draw an EtG-like character of a non-femme woman without it looking super butch, I did a
+After an unsuccessful attempt to draw an EtG-like character of a non-femme woman without it looking like a man, I did a
 second pass to make it look less EtG-like and slightly less manly (but not really):
 
 ![Player 2](./player2.png)
