@@ -2,7 +2,7 @@
 title: 'Game Devlog #2: Player Sprites and More Aiming'
 date: '2021-01-01'
 layout: post
-draft: true
+draft: false
 path: '/posts/game-devlog-2/'
 category: ''
 tags:
