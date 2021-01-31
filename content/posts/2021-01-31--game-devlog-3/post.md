@@ -13,6 +13,8 @@ description: Now you really *feel* like a dog in a hoodie.
 ogimage: './og.png'
 ---
 
+_Edit: Corrected the GitHub link in the Code section._
+
 This is going to be a short one, as most of my progress this month was done on creating the 'run' and 'idle' animations
 instead of coding. Here's a little clip of what it looks like:
 
@@ -43,7 +45,7 @@ _~ Time spent: 14 hrs_
 ## Code
 
 Feel free to download the project at
-[this git commit](https://github.com/robyn3choi/bullet-town/tree/e95b4c0934c084fb04fbece31bf5a0121562f509) and play
+[this git commit](https://github.com/robyn3choi/bullet-town/tree/3895eaa64065c4dd95ff1fcc46440fc8397ce283) and play
 around with it. There wasn't much actual code added, but I did spend quite a lot of time figuring out whether I should
 use Godot's [AnimationTree](https://docs.godotengine.org/en/stable/tutorials/animation/animation_tree.html) node like in
 [HeartBeast's animation tutorial](https://www.youtube.com/watch?v=Z9aR9IiiHT8&list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a).
