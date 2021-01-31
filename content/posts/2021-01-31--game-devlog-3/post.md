@@ -13,8 +13,8 @@ description: Now you really *feel* like a dog in a hoodie.
 ogimage: './og.png'
 ---
 
-This is going to be a short one, as most of my progress this month was done on creating the 'run' and 'idle' animations.
-Here's a little clip of what it looks like so far:
+This is going to be a short one, as most of my progress this month was done on creating the 'run' and 'idle' animations
+instead of coding. Here's a little clip of what it looks like:
 
 `youtube: https://youtu.be/ySwO6sXHzag`
 
