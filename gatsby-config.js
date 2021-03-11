@@ -132,10 +132,10 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: { trackingId: 'UA-170244271-1' },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-google-analytics',
+    //   options: { trackingId: 'UA-170244271-1' },
+    // },
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
