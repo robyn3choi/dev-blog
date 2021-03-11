@@ -1,5 +1,5 @@
 ---
-title: 'Game Devlog #4: Aiming and running with mouse and gamepad'
+title: 'Game Devlog #4: Aiming while running with mouse and gamepad'
 date: '2021-03-11'
 layout: post
 draft: false
