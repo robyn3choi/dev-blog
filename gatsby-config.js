@@ -194,6 +194,12 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `bitbirdy.dev`,
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-next-seo',
     //   options: {
