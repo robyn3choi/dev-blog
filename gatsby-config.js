@@ -195,9 +195,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-plausible`,
+      resolve: 'gatsby-plugin-plausible',
       options: {
-        domain: `bitbirdy.dev`,
+        domain: 'bitbirdy.dev',
       },
     },
     // {
