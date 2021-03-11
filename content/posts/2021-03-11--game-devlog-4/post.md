@@ -8,7 +8,7 @@ category: ''
 tags:
   - 'Games'
   - 'Godot Engine'
-description: And running while aiming.
+description: It turns out aiming is pretty different with a mouse vs a gamepad.
 ogimage: './og.png'
 ---
 
