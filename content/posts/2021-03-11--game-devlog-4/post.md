@@ -2,7 +2,7 @@
 title: 'Game Devlog #4: Aiming and running with mouse and gamepad'
 date: '2021-03-11'
 layout: post
-draft: true
+draft: false
 path: '/posts/game-devlog-4/'
 category: ''
 tags:
