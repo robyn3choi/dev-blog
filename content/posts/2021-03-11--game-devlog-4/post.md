@@ -12,10 +12,13 @@ description: It turns out aiming is pretty different with a mouse vs a gamepad.
 ogimage: './og.png'
 ---
 
-_It's been a while since my last post, and I'll talk about why in the Further Ramblings section at the bottom. But
-before getting started, I should mention that I've made the GitHub repo for this project private. I hope this doesn't
-deter anyone's interest in this project, and I hope that these devlogs/tutorials are clear enough to help you if you're
-making a similar game. If not, feel free to let me know how I can improve!_
+_Edit 29/03/2021: fixed a bug with aiming with the mouse where I was using the mouse position in viewport space instead
+of world space. Instead of using `event.position`, I'm now using `get_global_mouse_position`._
+
+It's been a while since my last post, and I'll talk about why in the Further Ramblings section at the bottom. But before
+getting started, I should mention that I've made the GitHub repo for this project private. I hope this doesn't deter
+anyone's interest in this project, and I hope that these devlogs/tutorials are clear enough to help you if you're making
+a similar game. If not, feel free to let me know how I can improve!
 
 Now that that's over with, I'm going to show you how I made the player character face the direction their gun is aiming
 while running, handling input from both mouse and gamepad.
@@ -83,7 +86,7 @@ var DirString = Globals.DirectionString
 func _input(event):
 	if event is InputEventMouseMotion:
 		is_using_joystick = false
-		var angle_to_cursor = get_angle_to(event.position)
+		var angle_to_cursor = get_angle_to(get_global_mouse_position())
 
 		mouse_direction.x = 0
 		if angle_to_cursor >= -PI*3/8 && angle_to_cursor < PI*3/8:
@@ -93,7 +96,7 @@ func _input(event):
 
 		mouse_direction.y = -1 if angle_to_cursor > -PI && angle_to_cursor < 0 else 1
 
-		if is_wielding: gun.aim_with_mouse(angle_to_cursor, event.position)
+		if is_wielding: gun.aim_with_mouse(angle_to_cursor, get_global_mouse_position())
 
 func _physics_process(delta):
 	anim_player.play("idle_" + DirString[mouse_direction])
