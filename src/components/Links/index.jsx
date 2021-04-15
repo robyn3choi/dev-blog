@@ -1,22 +1,17 @@
-import React from 'react'
-import './style.scss'
-import '../../assets/fonts/fontello-0fb92fd9/css/fontello.css'
+import React from 'react';
+import './style.scss';
+import '../../assets/fonts/fontello-fc31464d/css/fontello.css';
 
 class Links extends React.Component {
   render() {
-    const author = this.props.data
+    const author = this.props.data;
 
     return (
       <div className="links">
         <ul className="links__list">
           <li className="links__list-item">
-            <a href={`mailto:${author.email}`}>
-              <i className="icon-mail-squared" />
-            </a>
-          </li>
-          <li className="links__list-item">
-            <a href={author.github} target="_blank" rel="noopener noreferrer">
-              <i className="icon-github-squared" />
+            <a href={author.youtube} target="_blank" rel="noopener noreferrer">
+              <i className="icon-youtube-squared" />
             </a>
           </li>
           <li className="links__list-item">
@@ -32,6 +27,16 @@ class Links extends React.Component {
           <li className="links__list-item">
             <a href={author.linkedin} target="_blank" rel="noopener noreferrer">
               <i className="icon-linkedin-squared" />
+            </a>
+          </li>
+          <li className="links__list-item">
+            <a href={author.github} target="_blank" rel="noopener noreferrer">
+              <i className="icon-github-squared" />
+            </a>
+          </li>
+          <li className="links__list-item">
+            <a href={`mailto:${author.email}`}>
+              <i className="icon-mail-squared" />
             </a>
           </li>
         </ul>
@@ -65,8 +70,8 @@ class Links extends React.Component {
       //     </li>
       //   </ul>
       // </div>
-    )
+    );
   }
 }
 
-export default Links
+export default Links;

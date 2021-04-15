@@ -43,6 +43,7 @@ export const pageQuery = graphql`
           reddit
           portfolio
           twitter
+          youtube
         }
       }
     }

@@ -7,21 +7,9 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "1145676a91138011729fa2909997af66",
-      "css": "linkedin-squared",
-      "code": 62220,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "0ece9a12de796b8411f868d582bee678",
-      "css": "github-squared",
-      "code": 62208,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "17c21cd98db80e521e573eba247bd69b",
-      "css": "mail-squared",
-      "code": 61849,
+      "uid": "e331ff486a299c6bdf0056426c8fac53",
+      "css": "youtube-squared",
+      "code": 61798,
       "src": "fontawesome"
     },
     {
@@ -31,9 +19,27 @@
       "src": "fontawesome"
     },
     {
+      "uid": "17c21cd98db80e521e573eba247bd69b",
+      "css": "mail-squared",
+      "code": 61849,
+      "src": "fontawesome"
+    },
+    {
       "uid": "4fc515c6a083b42e628273ab06cb2a90",
       "css": "reddit-squared",
       "code": 61858,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0ece9a12de796b8411f868d582bee678",
+      "css": "github-squared",
+      "code": 62208,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1145676a91138011729fa2909997af66",
+      "css": "linkedin-squared",
+      "code": 62220,
       "src": "fontawesome"
     }
   ]

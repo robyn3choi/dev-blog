@@ -35,6 +35,7 @@ module.exports = {
       linkedin: 'https://www.linkedin.com/in/robyn-choi',
       reddit: 'https://www.reddit.com/user/bitbirdy',
       portfolio: 'https://robynchoi.me',
+      youtube: 'https://www.youtube.com/channel/UCZK6pEIRXNTRnwCaZMUXnDA',
       // rss: '#',
     },
   },

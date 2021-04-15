@@ -1,4 +1,5 @@
 
+.icon-youtube-squared:before { content: '\f166'; } /* '' */
 .icon-mail-squared:before { content: '\f199'; } /* '' */
 .icon-reddit-squared:before { content: '\f1a2'; } /* '' */
 .icon-github-squared:before { content: '\f300'; } /* '' */
